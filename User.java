@@ -5,8 +5,10 @@ public class User {
 
     public static void main(String[] args) {
         // FirstComeFirstServe();
-        ShortestJobFirst();
+        // ShortestJobFirst();
+        ShortestRemainingTimeFirst();
     }
+
 
     private static void FirstComeFirstServe() {
         FCFS fcfs = new FCFS();
@@ -45,6 +47,27 @@ public class User {
         sjf.run();
         sjf.printChart();
         sjf.ganteChart();
+    }
+
+    private static void ShortestRemainingTimeFirst() {
+        SRTF srtf = new SRTF();
+        System.out.print("Enter number of processes - ");
+        int processes = sc.nextInt();
+        System.out.println("Enter pid, AT, BT");
+        // int priority = 0;
+        while (processes-- > 0) {
+            String pid = sc.next();
+            int at = sc.nextInt();
+            int bt = sc.nextInt();
+            Process current = new Process(pid, at, bt);
+            srtf.add(current);
+            current.bt = bt;
+            // current.priority = current.arrivalTime;
+            // priority++;
+        }
+        srtf.run();
+        srtf.printChart();
+        srtf.ganteChart();
     }
 
 }

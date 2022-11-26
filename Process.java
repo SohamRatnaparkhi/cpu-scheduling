@@ -6,6 +6,8 @@ public class Process {
     int turnAroundTime = 0;
     int waitTime = 0;
     int priority = 0;
+    boolean isComplete = false;
+    int bt = 0;
 
     public Process(String id, int arrivalTime, int burstTime) {
         this.burstTime = burstTime;
