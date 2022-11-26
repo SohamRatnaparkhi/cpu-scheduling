@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class FCFS {
     private PriorityQueue q = new PriorityQueue();
     ArrayList<Process> ganteChart = new ArrayList<>();
+    private int avgWaiting = 0;
 
     public void add(Process p) {
         q.enqueue(p);
@@ -18,10 +19,12 @@ public class FCFS {
             currentProcess.exitTime = currentProcess.burstTime + extraFactor;
             currentProcess.turnAroundTime = currentProcess.exitTime - currentProcess.arrivalTime;
             currentProcess.waitTime = currentProcess.turnAroundTime - currentProcess.burstTime;
+            avgWaiting += currentProcess.waitTime;
             prevExitTime = currentProcess.exitTime;
             ganteChart.add(currentProcess);
         }
         System.out.println("Processes scheduled sucessfully!");
+        avgWaiting /= ganteChart.size(); 
     }
 
     public void printChart() {
@@ -42,6 +45,10 @@ public class FCFS {
             System.out.print("  " + p.id + "  |");
         }
         System.out.println();
+    }
+
+    public int getAvgWait() {
+        return avgWaiting;
     }
 
 }
