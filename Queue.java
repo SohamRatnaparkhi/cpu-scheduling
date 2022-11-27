@@ -27,6 +27,16 @@ public class Queue {
     public boolean isEmpty() {
         return size == 0;
     }
+
+    public boolean contains(Process p) {
+        Node temp = top;
+        while (temp != null) {
+            if (temp.data.id == p.id)
+                return true;
+            temp = temp.next;
+        }
+        return false;
+    }
 }
 
 class Node {
