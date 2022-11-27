@@ -8,8 +8,8 @@ public class User {
         System.out.println("\t1\t First Come First Serve");
         System.out.println("\t2\t Shortest Job First");
         System.out.println("\t3\t Shortest Remaining Time First");
-        System.out.println("\t4\t Priority Algorithm");
-        System.out.println("\t5\t RoundRobin");
+        System.out.println("\t4\t RoundRobin");
+        System.out.println("\t5\t Priority Algorithm");
         System.out.print("Enter choice - ");
         int choice = sc.nextInt();
 
@@ -24,10 +24,10 @@ public class User {
                 ShortestRemainingTimeFirst();
                 break;
             case 4:
-                PriorityAlgo();
+                RoundRobin();
                 break;
             case 5:
-                RoundRobin();
+                PriorityAlgo();
                 break;
 
             default:
@@ -53,6 +53,7 @@ public class User {
         fcfs.run();
         fcfs.printChart();
         fcfs.ganteChart();
+        System.out.println("Average Waiting time = " + fcfs.getAvgWait());
     }
 
     private static void ShortestJobFirst() {
@@ -71,6 +72,7 @@ public class User {
         sjf.run();
         sjf.printChart();
         sjf.ganteChart();
+        System.out.println("Average Waiting time = " + sjf.getAvgWait());
     }
 
     private static void ShortestRemainingTimeFirst() {
@@ -90,6 +92,7 @@ public class User {
         srtf.run();
         srtf.printChart();
         srtf.ganteChart();
+        System.out.println("Average Waiting time = " + srtf.getAvgWait());
     }
 
     private static void RoundRobin() {
@@ -108,7 +111,7 @@ public class User {
         rr.run();
         rr.printChart();
         rr.ganteChart();
-
+        System.out.println("Average Waiting time = " + rr.getAvgWait());
     }
 
     private static void PriorityAlgo() {
@@ -127,5 +130,6 @@ public class User {
         pa.run();
         pa.printChart();
         pa.ganteChart();
+        System.out.println("Average Waiting time = " + pa.getAvgWait());
     }
 }

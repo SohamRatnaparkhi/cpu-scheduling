@@ -59,4 +59,13 @@ public class Priority {
         System.out.println();
     }
 
+    public int getAvgWait() {
+        int avgWaiting = 0;
+        for (Process process : ganteChart) {
+            avgWaiting += process.waitTime;
+        }
+
+        return avgWaiting / size;
+    }
+
 }

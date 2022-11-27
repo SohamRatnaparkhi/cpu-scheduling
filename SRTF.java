@@ -7,6 +7,7 @@ public class SRTF {
     ArrayList<Process> processes = new ArrayList<>();
     ArrayList<Process> list = new ArrayList<>();
     ArrayList<Process> ganteChart = new ArrayList<>();
+    private int avgWaiting = 0;
     int size = 0;
 
     public void add(Process p) {
@@ -77,5 +78,14 @@ public class SRTF {
         }
         System.out.println();
     }
+
+    public int getAvgWait() {
+        for (Process process : set) {
+            if (process.isComplete)
+            avgWaiting += process.waitTime;
+        }
+
+        return avgWaiting / size;
+    } 
 
 }

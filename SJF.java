@@ -1,8 +1,6 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class SJF {
-    private HashMap<Integer, ArrayList<Process>> timeMap = new HashMap<>();
     ArrayList<Process> processes = new ArrayList<>();
     ArrayList<Process> ganteChart = new ArrayList<>();
     int size = 0;
@@ -26,10 +24,15 @@ public class SJF {
             Process minp = null;
             int min = Integer.MAX_VALUE;
             for (Process p : temp) {
-                if (p.burstTime < min) {
+                if (p.burstTime <= min) {
                     min = p.burstTime;
                     minp = p;
                 }
+            }
+            if (temp.size() == 0) {
+                ganteChart.add(new Process("free", currentTime, min));
+                currentTime++;
+                continue;
             }
             countComplete++;
             minp.exitTime = currentTime + minp.burstTime;
@@ -59,6 +62,15 @@ public class SJF {
             System.out.print("  " + p.id + "  |");
         }
         System.out.println();
+    }
+
+    public int getAvgWait() {
+        int avgWaiting = 0;
+        for (Process process : ganteChart) {
+            avgWaiting += process.waitTime;
+        }
+
+        return avgWaiting / size;
     }
 
 }

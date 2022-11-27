@@ -74,4 +74,14 @@ public class RoundRobin {
         System.out.println();
     }
 
+    public int getAvgWait() {
+        int avgWaiting = 0;
+        for (Process process : set) {
+            if (process.isComplete)
+            avgWaiting += process.waitTime;
+        }
+
+        return avgWaiting / size;
+    }
+
 }
