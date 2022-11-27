@@ -4,10 +4,37 @@ public class User {
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        // FirstComeFirstServe();
-        // ShortestJobFirst();
-        // ShortestRemainingTimeFirst();
-        RoundRobin();
+        System.out.println("Choice number\t Algorithm");
+        System.out.println("\t1\t First Come First Serve");
+        System.out.println("\t2\t Shortest Job First");
+        System.out.println("\t3\t Shortest Remaining Time First");
+        System.out.println("\t4\t Priority Algorithm");
+        System.out.println("\t5\t RoundRobin");
+        System.out.print("Enter choice - ");
+        int choice = sc.nextInt();
+
+        switch (choice) {
+            case 1:
+                FirstComeFirstServe();
+                break;
+            case 2:
+                ShortestJobFirst();
+                break;
+            case 3:
+                ShortestRemainingTimeFirst();
+                break;
+            case 4:
+                PriorityAlgo();
+                break;
+            case 5:
+                RoundRobin();
+                break;
+
+            default:
+                System.out.println("Incorrect choice");
+                break;
+        }
+
     }
 
     private static void FirstComeFirstServe() {
@@ -15,7 +42,6 @@ public class User {
         System.out.print("Enter number of processes - ");
         int processes = sc.nextInt();
         System.out.println("Enter pid, AT, BT");
-        // int priority = 0;
         while (processes-- > 0) {
             String pid = sc.next();
             int at = sc.nextInt();
@@ -23,7 +49,6 @@ public class User {
             Process current = new Process(pid, at, bt);
             current.priority = current.arrivalTime;
             fcfs.add(current);
-            // priority++;
         }
         fcfs.run();
         fcfs.printChart();
@@ -42,8 +67,6 @@ public class User {
             int bt = sc.nextInt();
             Process current = new Process(pid, at, bt);
             sjf.add(current);
-            // current.priority = current.arrivalTime;
-            // priority++;
         }
         sjf.run();
         sjf.printChart();
@@ -63,20 +86,17 @@ public class User {
             Process current = new Process(pid, at, bt);
             srtf.add(current);
             current.bt = bt;
-            // current.priority = current.arrivalTime;
-            // priority++;
         }
         srtf.run();
         srtf.printChart();
         srtf.ganteChart();
     }
-    
+
     private static void RoundRobin() {
         RoundRobin rr = new RoundRobin();
         System.out.print("Enter number of processes - ");
         int processes = sc.nextInt();
         System.out.println("Enter pid, AT, BT");
-        // int priority = 0;
         while (processes-- > 0) {
             String pid = sc.next();
             int at = sc.nextInt();
@@ -84,12 +104,28 @@ public class User {
             Process current = new Process(pid, at, bt);
             rr.add(current);
             current.bt = bt;
-            // current.priority = current.arrivalTime;
-            // priority++;
         }
         rr.run();
         rr.printChart();
         rr.ganteChart();
 
+    }
+
+    private static void PriorityAlgo() {
+        Priority pa = new Priority();
+        System.out.print("Enter number of processes - ");
+        int processes = sc.nextInt();
+        System.out.println("Enter pid, AT, BT, Priority");
+        while (processes-- > 0) {
+            String pid = sc.next();
+            int at = sc.nextInt();
+            int bt = sc.nextInt();
+            Process current = new Process(pid, at, bt);
+            pa.add(current);
+            current.bt = bt;
+        }
+        pa.run();
+        pa.printChart();
+        pa.ganteChart();
     }
 }

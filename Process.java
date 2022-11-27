@@ -14,5 +14,11 @@ public class Process {
         this.arrivalTime = arrivalTime;
         this.id = id;
     }
+    public Process(String id, int arrivalTime, int burstTime, int priority) {
+        this.burstTime = burstTime;
+        this.arrivalTime = arrivalTime;
+        this.id = id;
+        this.priority = priority;
+    }
 
 }
