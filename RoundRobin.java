@@ -45,6 +45,11 @@ public class RoundRobin {
                         temp.enqueue(p);
                     }
                 }
+                if (temp.size == 0) {
+                    ganteChart.add(new Process("free", currentTime, 0));
+                    currentTime++;
+                    continue;
+                }
                 if (!top.isComplete)
                     temp.enqueue(top);
                 ganteChart.add(top);

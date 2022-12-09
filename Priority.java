@@ -21,6 +21,11 @@ public class Priority {
                     temp.add(p);
                 }
             }
+            if (temp.size() == 0) {
+                ganteChart.add(new Process("free", currentTime, 0));
+                currentTime++;
+                continue;
+            }
             Process minp = null;
             int min = Integer.MAX_VALUE;
             for (Process p : temp) {
@@ -59,13 +64,13 @@ public class Priority {
         System.out.println();
     }
 
-    public int getAvgWait() {
+    public double getAvgWait() {
         int avgWaiting = 0;
         for (Process process : ganteChart) {
             avgWaiting += process.waitTime;
         }
 
-        return avgWaiting / size;
+        return (double)avgWaiting / (double)size;
     }
 
 }
