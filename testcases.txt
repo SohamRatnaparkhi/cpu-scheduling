@@ -21,7 +21,7 @@ p5 5 6
 
 
 -----------
-for sjf
+for sjf (use this)
 p1 3 1
 p2 1 4
 p3 4 2

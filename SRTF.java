@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 
 public class SRTF {
@@ -36,6 +35,12 @@ public class SRTF {
                     min = p.burstTime;
                     minp = p;
                 }
+            }
+
+            if (temp.size() == 0) {
+                ganteChart.add(new Process("free", currentTime, 0));
+                currentTime++;
+                continue;
             }
 
             minp.burstTime--;

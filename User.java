@@ -60,7 +60,7 @@ public class User {
         SJF sjf = new SJF();
         System.out.print("Enter number of processes - ");
         int processes = sc.nextInt();
-        System.out.println("Enter pid, AT, BT");
+        System.out.println("Enter P-id, AT, BT for every process");
         // int priority = 0;
         while (processes-- > 0) {
             String pid = sc.next();
@@ -123,7 +123,8 @@ public class User {
             String pid = sc.next();
             int at = sc.nextInt();
             int bt = sc.nextInt();
-            Process current = new Process(pid, at, bt);
+            int p = sc.nextInt();
+            Process current = new Process(pid, at, bt, p);
             pa.add(current);
             current.bt = bt;
         }
